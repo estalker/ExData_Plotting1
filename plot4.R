@@ -14,7 +14,8 @@ plot(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S")
 lines(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S"),data_subs$Global_active_power, type="l")
 #plot 2
 par(col="black")
-plot(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S"),data_subs$Sub_metering_1,
+plot(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S"),
+     pmax(data_subs$Sub_metering_1,data_subs$Sub_metering_2,data_subs$Sub_metering_3),
      ylab="Energy sub metering", xlab="",type="n")
 lines(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S"),data_subs$Sub_metering_1, type="l")
 par(col="red")

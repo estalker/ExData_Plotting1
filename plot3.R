@@ -5,9 +5,10 @@ data<-read.csv('household_power_consumption.txt', header = TRUE, sep = ";", na.s
 data_subs <- subset(data, as.Date(data$Date,"%d/%m/%Y")>="2007-02-01" & as.Date(data$Date,"%d/%m/%Y")<="2007-02-02")
 png("plot3.png")
 par(bg="transparent")
-plot(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S"),data_subs$Sub_metering_1,
-     ylab="Energy sub metering", xlab="",type="n")
 par(col="black")
+plot(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S"),
+     pmax(data_subs$Sub_metering_1,data_subs$Sub_metering_2,data_subs$Sub_metering_3),
+     ylab="Energy sub metering", xlab="",type="n")
 lines(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S"),data_subs$Sub_metering_1, type="l")
 par(col="red")
 lines(strptime(paste(data_subs$Date,data_subs$Time,sep=" "), "%d/%m/%Y %H:%M:%S"),data_subs$Sub_metering_2, type="l")
